@@ -1,0 +1,39 @@
+{
+  "name": "FrontKick",
+  "version": "0.0.1",
+  "description": "As Front Dev I want to start a new project from scratch, I can have an assets generator toolbox in order to improve fluidity of my workflow",
+  "keywords": [
+    "gulp",
+    "sass",
+    "json",
+    "es6",
+    "webserver",
+    "front development",
+    "assets"
+  ],
+  "author": [
+    {
+      "name": "MathieuFortune",
+      "email": "pro.mathieu.fortune@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MathieuFortune/frontkick"
+  },
+  "homepage": "https://github.com/MathieuFortune/frontkick#readme",
+  "bugs": "https://github.com/MathieuFortune/frontkick/issues",
+  "bin": {
+    "frontkick": "./bin/frontkick"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.13.0",
+    "gulp": "^3.9.1",
+    "gulp-bower": "0.0.13",
+    "gulp-clean-css": "^2.0.10",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^1.5.3"
+  }
+}
