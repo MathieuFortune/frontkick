@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     cleanCSS = require('gulp-clean-css'),
     rename = require("gulp-rename"),
     uglify = require('gulp-uglify'),
+    imagemin = require('gulp-imagemin'),
     browserSync = require('browser-sync').create(),
     reload      = browserSync.reload;
 
@@ -15,12 +16,14 @@ var path = {
     sass: './src/sass/style.scss',
     globalSass: './src/sass/**/*.scss',
     js: './src/js/*.js',
+    img: './src/img/*.*',
   },
   dist: {
     css: './dist/css/*.css',
     cssDir: './dist/css/',
     js: './dist/js/*.js',
     jsDir: './dist/js/',
+    imgDir: './dist/img/',
   },
   bowerDir: './bower_components' 
 };
@@ -36,16 +39,6 @@ gulp.task('bower', function() { 
 gulp.task('sass', function() {
     gulp.src(path.src.sass)
         .pipe(sass().on('error', sass.logError))
-        .pipe(cleanCSS())
-        .pipe(rename({
-          suffix: '.min'
-        }))
-        .pipe(gulp.dest(path.dist.cssDir));
-});
-
-//Minify CSS task
-gulp.task('minify-css', function() {
-    return gulp.src(path.src.sass)
         .pipe(cleanCSS({debug: true}, function(details) {
             console.log(details.name + ': ' + details.stats.originalSize);
             console.log(details.name + ': ' + details.stats.minifiedSize);
@@ -64,6 +57,16 @@ gulp.task('uglify', function() {
       suffix: '.min'
     }))
     .pipe(gulp.dest(path.dist.jsDir));
+});
+
+//Image optimization
+gulp.task('imagemin', function() {
+  return gulp.src(path.src.img)
+    .pipe(imagemin({
+        progressive: true,
+        verbose: true
+    }))
+    .pipe(gulp.dest(path.dist.imgDir));
 });
 
 //Serve task
